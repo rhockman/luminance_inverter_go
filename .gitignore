@@ -1,4 +1,4 @@
 vendor/
 .idea/
-converted/
+converted/*
 testdata/

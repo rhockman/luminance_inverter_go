@@ -14,9 +14,11 @@ import (
 )
 
 func main() {
-	path := "testdata"
+	pathIn := "testdata"
 	pathOut := "converted"
-	files, _ := ioutil.ReadDir(path)
+	files, _ := ioutil.ReadDir(pathIn)
+
+	_ = os.Mkdir(pathOut, os.ModePerm)
 
 	var wg sync.WaitGroup
 	wg.Add(len(files))
@@ -24,7 +26,7 @@ func main() {
 	for _, f := range files {
 		go func(f os.FileInfo) {
 			defer wg.Done()
-			reader, err := os.Open(path + "/" + f.Name())
+			reader, err := os.Open(pathIn + "/" + f.Name())
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -73,7 +75,7 @@ func main() {
 				log.Fatal(err)
 			}
 
-			fmt.Println("All done with ", f.Name())
+			fmt.Println("Luminance Inversion complete:", f.Name())
 		}(f)
 	}
 
