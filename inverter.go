@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	gocolor "github.com/gerow/go-color"
 	"image"
 	"image/color"
 	_ "image/jpeg"
-	gocolor "github.com/gerow/go-color"
 	"image/png"
 	"io/ioutil"
 	"log"
@@ -80,6 +80,5 @@ func main() {
 	}
 
 	wg.Wait()
-
 
 }
